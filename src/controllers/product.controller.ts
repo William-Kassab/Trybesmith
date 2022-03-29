@@ -13,6 +13,6 @@ export default class ProductController {
     const product = req.body;
 
     const productCreated = await this.productService.createProducts(product);
-    res.status(201).json(productCreated);
+    res.status(201).json({ item: productCreated });
   };
 }
