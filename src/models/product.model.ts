@@ -1,4 +1,4 @@
-import { Pool, ResultSetHeader } from 'mysql2/promise';
+import { Pool } from 'mysql2/promise';
 import Product from '../interfaces/product.interface';
 
 export default class ProductModel {
@@ -9,7 +9,7 @@ export default class ProductModel {
   }
 
   public async getAllProducts(): Promise<Product[]> {
-    const products = await this.connection.execute('SELECT * FROM Products');
+    const products = await this.connection.execute('SELECT * FROM Trybesmith.Products');
     const [rows] = products;
     return rows as Product[];
   }
