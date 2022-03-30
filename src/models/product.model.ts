@@ -26,4 +26,10 @@ export default class ProductModel {
     const { insertId } = dataInserted;
     return { id: insertId, ...product };
   }
+
+  public async findProductById(id: number): Promise<Product[]> {
+    const [productArray] = await this.connection.execute(`SELECT * FROM Trybesmith.Products
+    WHERE orderId = ?;`, [id]);
+    return productArray as Product[];
+  }
 }
